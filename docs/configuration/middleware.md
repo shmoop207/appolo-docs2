@@ -5,24 +5,34 @@ sidebar_label: Middlewares
 ---
 
 You can configure express middleware or add custom middleware by adding configuration files to the middlewares folder.
-The middlewares configuration file is called after the environment files were loaded.
 
-in file config/middlewares/all.ts
-```typescript
-import favicon = require('static-favicon');
+## Global Middlwares
+The middlewares configuration file is called after the environment files loaded.
+
+The middlwares will be used on all requests.
+```typescript title="config/middlewares/all.ts"
 import bodyParser = require("body-parser");
 import {IRequest,IResponse,NextFn}  from '@appolo/route';
 import {App}  from '@appolo/core';
 
 export = function (app: App) {
-    app.use(bodyParser.json());
-    app.use(function (req:IRequest, res: IResponse, next: NextFn) {
+    app.route.use(bodyParser.json());
+    app.route.use(function (req:IRequest, res: IResponse, next: NextFn) {
         res.setHeader("Access-Control-Allow-Origin", "*");
         next();
     });
-    app.use(favicon());
 }
 ```
+This middalware will added only when the env is `production`
+```typescript title="config/middlewares/production.ts"
+import favicon = require('static-favicon');
+import {App}  from '@appolo/core';
+
+export = function (app: App) {
+     app.route.use(favicon());
+}
+```
+
 ## Async middlewares
 Async middlwares also supported. 
 
@@ -32,7 +42,7 @@ import {IRequest,IResponse,NextFn}  from '@appolo/route';
 import {App}  from '@appolo/core';
 
 export = function (app: App) {
-    app.use(async function (req:IRequest, res: IResponse, next: NextFn) {
+    app.route.use(async function (req:IRequest, res: IResponse, next: NextFn) {
         
       await someAsyncFnction();
      

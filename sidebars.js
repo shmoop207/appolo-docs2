@@ -1,8 +1,9 @@
 module.exports = {
   root: {
-    Overview: ['overview/introduction', "overview/getting-started", "overview/benchmarks", "overview/examples"],
-    Configuration: ["configuration/options","configuration/environments","configuration/directory-structure","configuration/middlewares"],
-    Plugins: ['plugins', 'env-plugin', 'express-plugin'],
+    Overview: ['overview/introduction','overview/architecture', "overview/getting-started", "overview/benchmarks", "overview/examples"],
+    Configuration: ["configuration/options","configuration/directory-structure","configuration/environments","configuration/middlewares","configuration/modules"],
+    Core: ['core/app','core/tree','core/modules'],
+    Engine: ['engine/bootstrap'],
     "API Reference": [
       'container',
       'lifecycle',
