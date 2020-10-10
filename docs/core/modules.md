@@ -8,7 +8,7 @@ Holds methods to handle loading of modules.
 
 ## Usage
 ### use
-#### `app.use(...module: ModuleArg []): this`
+#### `app.modules.use(...module: ModuleArg []): this`
 add a module to app
 ```typescript
 app.modules.use(SomeModule)
