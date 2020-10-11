@@ -16,7 +16,7 @@ appolo create configuration options, all options are optional
 | `errorMessage` | print route http error.toString() | `boolean` | `true` |
 | `errorMessage` | print route http error.stack | `boolean` | `false` |
 | `maxRouteCache` | the max size of route lookup lru cache | `number` | `10000` |
-
+|  `qsParser` | function for parsing querystring |`(query:string)=>{[index:string]:any}` | `querystring` |
 ## Usage
 ```typescript
 import {createApp}  from '@appolo/core';

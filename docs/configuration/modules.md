@@ -14,17 +14,17 @@ import {App}  from '@appolo/core';
 export = async function (app: App,env:IEnv) {
     
     //load module instantly
-    await app.modules.load(LoggerModule);
+    await app.module.load(LoggerModule);
     
     //load module Fn
-    await app.modules.loadFn(function(injector:Injector){
+    await app.module.loadFn(function(injector:Injector){
         injector.addObject("someId","value")
     }));  
     
-    app.modules.use(SomeModule).use(SomeModule,{"some","value"})
+    app.module.use(SomeModule).use(SomeModule,{"some","value"})
     
     // load modules in parallel
-    app.modules.use(SomeModule2,SomeModule3,{"some","value"})
+    app.module.use(SomeModule2,SomeModule3,{"some","value"})
 }
 ```
 ## Async middlewares
