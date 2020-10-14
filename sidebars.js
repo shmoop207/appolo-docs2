@@ -4,7 +4,7 @@ module.exports = {
     Configuration: ["configuration/options","configuration/directory-structure","configuration/environments","configuration/middlewares","configuration/modules"],
     Core: ['core/create-app','core/app','core/tree','core/modules','core/discovery'],
     Engine: ['engine/bootstrap'],
-    Inject: ['inject/dependency-injection','inject/injector','inject/define','inject/inject-constructor','inject/inject-property','inject/singleton','inject/alias'],
+    Inject: ['inject/dependency-injection','inject/injector','inject/define','inject/inject-constructor','inject/inject-property','inject/singleton','inject/alias','inject/init'],
     Utils: ['utils/event-dispatcher','utils/helpers'],
     "API Reference": [
       'container',
