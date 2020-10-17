@@ -4,6 +4,7 @@ title: Initialization
 sidebar_label: Initialization
 ---
 ## Init
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Method%20Decorator-red?style=for-the-badge" />
 
 The `init` method will be called after all instances created and all the properties injected.
 ```typescript
@@ -49,6 +50,8 @@ export class Bootstrap implements IBootstrap{
  ```
 
 ## InitAsync
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Method%20Decorator-red?style=for-the-badge" />
+
 same as init but if a promise returned it will be awaited before the initialize process continued.<br/>
 all `initAsync` methods will run in parallel.   
 ```typescript
@@ -72,6 +75,7 @@ export class FooController{
 }
 ```
 ## Bootstrap
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Method%20Decorator-red?style=for-the-badge" />
 
 The `bootstrap` method will be called after all init and initAsync methods called.
 ```typescript
@@ -105,6 +109,8 @@ fooController.name // foo
 ```
 
 ## BootstrapAsync
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Method%20Decorator-red?style=for-the-badge" />
+
 same as `bootstrap` if a promise returned it will be awaited before the initialize process continued.<br/>
 all `bootstrapAsync` methods will run in parallel.   
 ```typescript

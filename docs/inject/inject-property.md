@@ -3,6 +3,7 @@ id: inject-property
 title: "Inject Property"
 sidebar_label: "Inject Property"
 ---
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
 
 `@inject` will try to inject object id to the same property name.
 ```typescript
@@ -30,6 +31,8 @@ console.log(buzzController.name) // foobar
 ```
 
 ## Inject Instance By Name
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 you can set the name of the property the object will be injected to.
 ```typescript
 @define()
@@ -55,10 +58,12 @@ console.log(buzzController.name) // foobar
 ```
 
 ## Inject Property Value
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 ```typescript
 @define()
 class FooManager{
-    @injectValue('foo') name:string
+    @value('foo') name:string
     get name () {return this.name;}
  }
 
@@ -74,6 +79,8 @@ console.log(buzzController.name()) // foo
 ```
 
 ## Inject Method Param
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Method%20Decorator-red?style=for-the-badge" />
+
 you can inject an instance to method param to any function.
 ```typescript
 @define()
@@ -93,6 +100,8 @@ console.log(buzzController.name()) // foo
 ```
 
 ## Inject Factory Method
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 factory method is a function that will return the injected object.
 this is useful to create many instances of the same class.
 ```typescript
@@ -143,6 +152,8 @@ console.log(fooController.name) // foo
 
 
 ## Inject Property Array
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 you can inject an array of properties by reference or by value.
 
 ```typescript
@@ -170,6 +181,8 @@ buzzController.name // foobar
 ```
 
 ## Inject Property Dictionary
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 you can inject a dictionary of properties by reference or by value.
 
 ```typescript
@@ -195,6 +208,8 @@ buzzController.name // foobarbaz
 
 ```
 ## Inject Property From Object Property
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 you can inject property from other object property.
 ```typescript
 @define()

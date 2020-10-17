@@ -129,3 +129,26 @@ class FooManager extends BaseManager{
 }
 ```
 > Remember not to use `@define` on the parent class.
+
+## Override
+you can to register 2 classes with the same id but sometimes it's need to override the registered class for example in testing env
+```typescript
+
+@define()
+@singleton()
+export class DbProvider {
+   
+    private getData(){...}
+}
+
+// in testing env
+
+@define()
+@singleton()
+@override()
+export class DbProvider {
+   
+    private getData(){ //return mock data}
+}
+
+```

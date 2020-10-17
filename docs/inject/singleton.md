@@ -3,6 +3,7 @@ id: singleton
 title: Singleton
 sidebar_label: "Singleton"
 ---
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" />
 
 The class instance will be created only once and injector will return the same instance every time.
 ```typescript

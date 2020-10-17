@@ -3,6 +3,7 @@ id: bootstrap
 title: Bootstrap
 sidebar_label: Bootstrap
 ---
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" />
 
 Once it launched, appolo will try to find an appolo bootstrap class and call it's run method. <br/>
 Only when bootstrap is finished, the server will start. <br/>

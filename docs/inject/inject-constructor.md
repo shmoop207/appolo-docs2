@@ -3,6 +3,8 @@ id: inject-constructor
 title: "Inject constructor"
 sidebar_label: "Inject Constructor"
 ---
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Method%20Decorator-red?style=for-the-badge" />
+
 you can inject objects to constructor arguments. 
 
 The object instance can be injected by id or by value.

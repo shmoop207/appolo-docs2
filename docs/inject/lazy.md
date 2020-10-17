@@ -4,6 +4,8 @@ title: Lazy
 sidebar_label: Lazy
 ---
 ## Lazy Class
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" />
+
 lazy class will be created only when injected for the first time
 ```typescript
 @define()
@@ -24,6 +26,8 @@ console.log(buzzController.name) // bar
 ```
 
 ## Lazy Inject
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 lazy inject will inject property method that will create inject class once called
 ```typescript
 @define()
@@ -43,6 +47,8 @@ console.log(buzzController.name) //only now bar manager will created
 ```
 
 ## Lazy Custom Function
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 invoke custom lazy function, the value returned from will be injected 
 ```typescript
 

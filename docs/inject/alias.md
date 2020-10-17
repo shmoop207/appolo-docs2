@@ -9,6 +9,8 @@ You can add alias names to classes and get all the classes instances by alias na
 You can multi alias names to a single class.
 
 ## Alias Singleton
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" /> <img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 All the alias classes must be `singleton`.
 
 ```typescript
@@ -67,6 +69,8 @@ class SomeController{
 ```
 
 ## Alias Factory
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" /> <img class="decorator-badge" src="https://img.shields.io/badge/Type-Property%20Decorator-orange?style=for-the-badge" />
+
 You can add alias factory names to classes and get all the classes new instance by factory method.
 
 ```typescript

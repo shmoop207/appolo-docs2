@@ -7,6 +7,8 @@ sidebar_label: Factory
 Factory used to define runtime custom injections. 
 
 ## Singleton Factory
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" />
+
 The return value of the factory `get` method will be injected to class properties;
 
 Factory object must have implement `IFactory` method that will be called in order to inject the object instance.
@@ -60,6 +62,8 @@ class SomeController{
 ```
 
 ## Dynamic Factory
+<img class="decorator-badge" src="https://img.shields.io/badge/Type-Class%20Decorator-blue?style=for-the-badge" />
+
 dynamic factories can be used when creating not singleton classes
 
 the return value of the factory get method will be injected.
