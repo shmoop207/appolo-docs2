@@ -12,94 +12,115 @@ You can multi alias names to a single class.
 All the alias classes must be `singleton`.
 
 ```typescript
-interface IHandler{
-    name:string
+interface IMailProvider{
+    send()
 }
 
 @define()
 @singleton()
-@alias('IHandler')
-class FooManager implements IHandler {
-    get name(){return 'foo'}
+@alias('IMailProvider')
+export class AwsMailProvider implements IMailProvider {
+    send(){}
 }
 @define()
 @singleton()
-@alias('IHandler')
-class BarManager implements IHandler{
-    get name(){return 'bar'}
+@alias('IMailProvider')
+export class GoogleMailProvider implements IMailProvider{
+     send(){}
 }
 
 @define()
-class BuzzController{
-    @alias('IHandler') allHandlers:IHandler[]
+class SomeController{
+    @alias('IHandler') mailProviders:IMailProvider[]
 
-    get name(){
-        return this.allHandlers.map(obj =>obj.name).join();
+     send(){
+        return this.mailProviders.forEach(provider =>provider.send())
     }
 }
 
-let buzzController = injector.get(BuzzController);
-buzzController.name // foobar
 ```
-inject alias by dictionary
+Inject alias by a dictionary.
 ```typescript
-
 @define()
 @singleton()
-@alias('IHandler')
-class FooManager implements IHandler {
-    get name(){return 'foo'}
+@alias('IMailProvider')
+export class AwsMailProvider implements IMailProvider {
+    public Type = "aws" 
+    send(){}
 }
 @define()
 @singleton()
-@alias('IHandler')
-class BarManager implements IHandler{
-    get name(){return 'bar'}
+@alias('IMailProvider')
+export class GoogleMailProvider implements IMailProvider{
+    public Type = "google" 
+    send(){}
 }
 
 @define()
-class BuzzController{
-    @alias('IHandler','name') allHandlers:{[index:string]:IHandler}
+class SomeController{
+    @alias('IMailProvider','Type') mailProviders:{[index:string]:IMailProvider}
 
-    get name(){
-        return this.allHandlers["bar"].name
+    public send(providerType:string){
+        return this.mailProviders[providerType].send()
     }
 }
-
-let buzzController = injector.get(BuzzController);
-buzzController.name // bar
 ```
 
 ## Alias Factory
 You can add alias factory names to classes and get all the classes new instance by factory method.
 
 ```typescript
-interface IHandler{
-    name:string
+interface IMailProvider{
+    send()
 }
 
 @define()
-@aliasFactory('IHandler')
-class FooManager implements IHandler{
-    constructor (private _name:string) {  }
-    get name():string{ return this._name }
+@aliasFactory('IMailProvider')
+class AwsMailProvider implements IMailProvider{
+    constructor (private from:string) {  }
+    send() {...}
 }
 @define()
-@aliasFactory('IHandler')
-class BarManager implements IHandler{
-    public name:string
-    constructor (private _name:string) {  }
-    get name():string{ return this._name }
-}
+@aliasFactory('IMailProvider')
+class GoogleMailProvider implements IMailProvider{
+    
+    constructor (private from:string) {  }
+    send() {...}}
 
 @define()
-class BuzzController{
-    @aliasFactory('IHandler') allHandlers:((name:string)=>IHandler)[]
+class SomeController{
+    @aliasFactory('IMailProvider') mailProviders:((name:string)=>IMailProvider)[]
 
-    get name(){
-        return this.allHandlers.map((createHandler,index) =>createHandler(index).name).join();
+    send(from:string){
+        return this.mailProviders.forEach(createHandler =>createHandler(from).send());
     }
+}
+```
 
-let buzzController = injector.get(BuzzController);
-buzzController.name // 01
+Inject alias Factory by a dictionary.
+
+we need to set indexBy property to be static.
+```typescript
+
+@define()
+@aliasFactory('IMailProvider')
+export class AwsMailProvider implements IMailProvider {
+    public static Type = "aws" 
+    send(){}
+}
+@define()
+@aliasFactory('IMailProvider')
+export class GoogleMailProvider implements IMailProvider{
+    public static Type = "google" 
+    send(){}
+}
+
+@define()
+class SomeController{
+    @aliasFactory('IMailProvider','Type') mailProviders:{[index:string]:(from:string)=>IMailProvider}
+
+    public send(providerType:string,from:string){
+        return this.mailProviders[providerType](from).send()
+    }
+}
 ```
