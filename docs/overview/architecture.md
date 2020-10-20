@@ -17,4 +17,4 @@ Appolo is build from 8 modules, each of them you can as standalone module .
 <br/><br/>
 
 
-![chat](/img/architecture.svg)
+![architecture](/img/architecture.svg)
