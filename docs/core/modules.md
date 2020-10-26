@@ -1,7 +1,7 @@
 ---
 id: modules
-title: Modules
-sidebar_label: Modules
+title: Module
+sidebar_label: Module
 ---
 
 Holds methods to handle loading of modules.

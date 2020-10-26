@@ -14,6 +14,8 @@ Each route class has the following methods:
  - `action` - the action function the will be invoked to handle the route.
  - `middleware` - middleware function the will be invoked before the controller. If the `next` function is not called or called with an error, the controller won`t be created.
 
+## Prefix
+prefix to all routes in the controller can be added using `@controller([preix])`.
 ```typescript
 import {Controller,IRequest,IResponse,get,post} from '@appolo/route';
 import {inject} from '@appolo/inject';
@@ -50,7 +52,7 @@ export class Test2Controller extends Controller{
    }
 }
 ```
-
+## Create
 You can also define routes using `app.route.createRoute`
 ```typescript
 import {controller,inject,Controller,IRequest,IResponse,Methods} from '@appolo/route';
@@ -74,9 +76,18 @@ export class TestController extends Controller{
         res.send(this.dataManager.getData());
     }
  }
+```
 
+or using discovery
+```typescript
+let route  = Discovery.createRoute(SomeController,"someAction"); // Route<SomeController>
+route.path("/some/path")
+
+route = Discovery.getRoute(SomeController,"someAction") // Route<SomeController>
+route.method("post")
 
 ```
+## Order
 you can set the route order if 2 route collide.
 
 in the example `/test/:id` will catch also `/test/somepath`
@@ -103,12 +114,18 @@ export class TestController extends Controller{
  }
 ```
 
-
+## Global
+global routes `*` and `/` are ordered last
 
 you can catch not found routes using `*`
 ```typescript
 @controller()
 export class TestController extends Controller{
+
+    @get("/")
+    public notFound (req:IRequest, res:IResponse) {
+        res.send("index");
+    }
 
     @get("*")
     public notFound (req:IRequest, res:IResponse) {
@@ -116,3 +133,4 @@ export class TestController extends Controller{
     }
  }
 ```
+

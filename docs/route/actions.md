@@ -122,12 +122,12 @@ export class LoginController extends StaticController{
 
 	@get("/some/data")
     @statusCode(201)
-    public aynsc loginUser(req:IRequest,res:IResponse){
+    public aynsc getData(req:IRequest,res:IResponse){
         return {data:"user"}
     }
 
     @get("/some/data2")
-    public aynsc loginUser(req:IRequest,res:IResponse){
+    public aynsc getData2(req:IRequest,res:IResponse){
         res.status(201)
         return {data:"user"}
     }
@@ -144,12 +144,12 @@ export class LoginController extends StaticController{
 
 	@get("/some/data")
     @header('Cache-Control', 'none')
-    public aynsc loginUser(req:IRequest,res:IResponse){
+    public aynsc getData(req:IRequest,res:IResponse){
         return {data:"user"}
     }
 
     @get("/some/data2")
-    public aynsc loginUser(req:IRequest,res:IResponse){
+    public aynsc getData(req:IRequest,res:IResponse){
         res.header("Cache-Control","none")
         return {data:"user"}
     }
@@ -164,23 +164,45 @@ import {controller,singleton,inject,IRequest,IResponse} from '@appolo/route';
 export class LoginController extends StaticController{
 
     @get("/some/data")
-    public aynsc loginUser(req:IRequest,res:IResponse){
+    public aynsc getData(req:IRequest,res:IResponse){
         res.gzip();
         return return {data:"some big data"}
 	}
 
 	@get("/some/data2")
-    public aynsc loginUser2(req:IRequest,res:IResponse){
+    public aynsc getData2(req:IRequest,res:IResponse){
         res.gzip().send({data:"some big data"})
     }
 
     @get("/some/data3")
     @gzip()
-    public aynsc loginUser3(req:IRequest,res:IResponse){
+    public aynsc getData3(req:IRequest,res:IResponse){
         return {data:"some big data"}
     }
 }
 
+```
+
+### Cache Control
+specify Cache-Control header in seconds
+```typescript
+import {controller,IRequest,IResponse,statusCode,cacheControl} from '@appolo/route';
+@controller()
+export class LoginController extends StaticController{
+
+
+	@get("/some/data")
+    @cacheControl(1000)
+    public aynsc getData(req:IRequest,res:IResponse){
+        return {data:"user"}
+    }
+
+    @get("/some/data2")
+    public aynsc getData(req:IRequest,res:IResponse){
+        res.cache(1000)
+        return {data:"user"}
+    }
+}
 ```
 
 ### Custom Response
@@ -199,7 +221,7 @@ export class SomeController extends StaticController{
 
 	@get("/some/data")
     @myDecorator
-    public aynsc loginUser(req:IRequest,res:IResponse){
+    public aynsc getData(req:IRequest,res:IResponse){
         return {data:"user"}
     }
 }

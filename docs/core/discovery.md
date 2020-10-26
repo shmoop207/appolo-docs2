@@ -198,22 +198,22 @@ Discovery.decorateResponse("setMyHeader",function(value:string) {
 }) 
 ```
 
-### getRouteDefinition
-#### `getRouteDefinition<T extends IController>(fn: any, action: ((c: T) => Function) | string): Route<T>`
+### getRoute
+#### `getRoute<T extends IController>(fn: any, action: ((c: T) => Function) | string): Route<T>`
 return controller route definition
 * Also, available as static method.
 * Only available on root Discovery `@appolo/core`.
 ```typescript
-Discovery.getRouteDefinition(SomeController) // Route<SomeController>
+Discovery.getRoute(SomeController,"someAction") // Route<SomeController>
 ```
 
-### createRouteDefinition
-#### `createRouteDefinition<T extends IController>(fn: any, action: ((c: T) => Function) | string): Route<T>`
+### createRoute
+#### `createRoute<T extends IController>(fn: any, action: ((c: T) => Function) | string): Route<T>`
 create controller route definition.
 * Also, available as static method.
 * Only available on root Discovery `@appolo/core`.
 ```typescript
-let route  = Discovery.createRouteDefinition(SomeController); // Route<SomeController>
+let route  = Discovery.createRoute(SomeController,"someAction"); // Route<SomeController>
 route.path("/some/path")
 ```
 

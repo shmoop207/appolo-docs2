@@ -6,10 +6,10 @@ sidebar_label: Middlewares
 
 You can configure express middleware or add custom middleware by adding configuration files to the middlewares folder.
 
-## Global Middlwares
+## Global Middlewares
 The middlewares configuration file is called after the environment files loaded.
 
-The middlwares will be used on all requests.
+The middlewares will be used on all requests.
 ```typescript title="config/middlewares/all.ts"
 import bodyParser = require("body-parser");
 import {IRequest,IResponse,NextFn}  from '@appolo/route';
@@ -23,7 +23,7 @@ export = function (app: App) {
     });
 }
 ```
-This middalware will added only when the env is `production`
+This middleware will be added only when the env is `production`
 ```typescript title="config/middlewares/production.ts"
 import favicon = require('static-favicon');
 import {App}  from '@appolo/core';
@@ -34,7 +34,7 @@ export = function (app: App) {
 ```
 
 ## Async middlewares
-Async middlwares also supported. 
+Async middlewares also supported. 
 
 if error is thrown `next(new HttpError(e))` is called
 ```typescript

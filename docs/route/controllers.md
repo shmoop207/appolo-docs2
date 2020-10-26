@@ -91,7 +91,7 @@ supported http methods
  }
  ```
 
-## Api
+## API
 ### send
 #### send(statusCode?: number, data?: any)
 send response with status and optional data 
