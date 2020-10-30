@@ -182,30 +182,61 @@ export class SomeClass {
 
 
 ```
+### metaData
+#### get metaData(): T
+return metaData
+
 ### index
+#### get index(): number
 return the index number if the pipeline defined on method argument
 
 ### arguments
+#### get arguments(): IArguments
 return `IArguments` of the origin method
 
 ### instance
+#### get instance(): any
 return the current class instance
 
 ### type
+#### get type(): any
 return the class type
 
 ### action
+#### get action(): string
 return  string name of the method name
 
 ### argumentsTypes
+#### get argumentsTypes(): any[]
 return array of the arguments types
+
+### isArgument
+#### get isArgument(): boolean
+return true if run on single method argument
+
+
 ### setArgumentAt
-return set argument value at index
+#### setArgumentAt(index: number, value: any)
+set argument value at index
 
 ### getArgumentAt
+#### getArgumentAt<T\>(index: number): T
 return  argument value at index
 
+### getArgumentByType
+#### getArgumentByType<T\>(ctor: typeof T): T
+return  argument from arguments by given type
+
+### getRequest
+#### getRequest<T extends http.IncomingMessage\>(): T
+return  `http.IncomingMessage` if exists in arguments
+
+### getResponse
+#### getResponse<T extends http.ServerResponse\>(): T
+return `http.ServerResponse` if exists in arguments
+
 ### values
+#### get values(): { index: number, value: any, type: any }[]
 return  array of argument values by index and type
 
 ## Logger example
