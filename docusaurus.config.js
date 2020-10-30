@@ -21,7 +21,7 @@ module.exports = {
     // announcementBar: {
     //   id: 'supportus',
     //   content:
-    //     '⭐️ If you like Injex, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/uditalias/injex">GitHub</a>! ⭐️',
+    //     '⭐️ If you like Injex, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/shmoop207/appolo">GitHub</a>! ⭐️',
     // },
     prism: {
       defaultLanguage: "typescript",
@@ -41,7 +41,7 @@ module.exports = {
         },
        // { to: 'docs/runtimes/node', activeBaseRegex: '/runtimes/', label: 'Runtimes', position: 'right' },
         //{ to: 'docs/plugins/', label: 'Plugins', position: 'right' },
-        { to: 'docs/examples/', label: 'Examples', position: 'right' },
+        { to: 'docs/overview/examples/', label: 'Examples', position: 'right' },
         {
           href: 'https://github.com/shmoop207/appolo',
           label: 'GitHub',
@@ -68,21 +68,25 @@ module.exports = {
         {
           title: 'Guides & Tutorials',
           items: [
-            {
-              label: 'Basic Usage',
-              to: 'docs/basic-example',
-            },
+            
             {
               label: 'Examples & Use Cases',
-              to: 'docs/examples',
+              to: 'docs/overview/examples',
             },
             {
-              label: 'Create a Runtime',
-              to: 'docs/runtimes/create-runtime',
+              label: 'Configuration',
+              to: 'docs/configuration/options',
             },
             {
-              label: 'Plugins Concept',
-              to: 'docs/plugins',
+              label: 'Routes',
+              to: 'docs/route/controllers',
+            },{
+              label: 'Modules',
+              to: 'docs/engine/modules',
+            },
+            {
+              label: 'Inject',
+              to: 'docs/inject/dependency-injection',
             }
           ]
         },
@@ -91,12 +95,12 @@ module.exports = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/uditalias/injex',
+              href: 'https://github.com/shmoop207/appolo',
             },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/y5EpGd'
-            },
+            // {
+            //   label: 'Discord',
+            //   href: 'https://discord.gg/y5EpGd'
+            // },
             {
               html: `<a href="https://www.netlify.com" target="_blank"><img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify"></a>`
             }
@@ -104,9 +108,9 @@ module.exports = {
         }
       ],
       logo: {
-        alt: 'Injex Logo',
-        src: 'img/logo.svg',
-        href: 'https://www.injex.dev',
+        alt: 'appolo Logo',
+        src: 'img/appolo_fav.ico',
+        href: 'https://appolojs.com/',
       },
       copyright: `Copyright © ${new Date().getFullYear()} Appolo`,
     }
@@ -120,7 +124,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/uditalias/injex/edit/master/website/',
+            'https://github.com/shmoop/appolo-docs/edit/master/website/',
         },
         // blog: {
         //   showReadingTime: true,
