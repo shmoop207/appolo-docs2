@@ -13,6 +13,41 @@ Each route class has the following methods:
  - `method` - one of `get`,`post`,`patch`,`delete`,`put`. default `get`.
  - `action` - the action function the will be invoked to handle the route.
  - `middleware` - middleware function the will be invoked before the controller. If the `next` function is not called or called with an error, the controller won`t be created.
+## Path
+path can be defined with `path`,`get`,`post`,`del`,`put`,`patch`
+path can be static string ,dynamic params or regex expressions 
+
+```typescript
+import {Controller,IRequest,IResponse,get,post,del,Methods,method,path} from '@appolo/route';
+import {inject} from '@appolo/inject';
+
+@controller()
+export class TestController extends Controller{
+    @inject() dataManager:DataManager
+
+    @get("/test/:userId/:accountId")
+    public test (req:IRequest, res:IResponse){
+        return this.dataManager.getData(req.params.userId);
+    }
+
+    @del("/test/:userId")
+    public test2 (req:IRequest, res:IResponse){
+        return this.dataManager.getData(req.params.userId);
+    }
+
+    @post("/test/:file(^\\d+).png")
+    public test3 (req:IRequest, res:IResponse){
+        return this.dataManager.getData(req.params.file);
+    }
+    
+    @path("/test/:userId/somepath")
+    @method(Methods.Put)
+    public test2 (req:IRequest, res:IResponse){
+        return this.dataManager.getData(req.params.userId);
+    }
+
+}
+```
 
 ## Prefix
 prefix to all routes in the controller can be added using `@controller([preix])`.
@@ -27,11 +62,6 @@ export class TestController extends Controller{
     @get("/test/:userId")
     public test (req:IRequest, res:IResponse){
         return this.dataManager.getData(req.params.userId);
-    }
-
-    @get("/test/:file(^\\d+).png")
-    public test (req:IRequest, res:IResponse){
-        return this.dataManager.getData(req.params.file);
     }
 }
 ```
