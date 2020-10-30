@@ -158,15 +158,6 @@ import {pipeline,IPipeline} from '@appolo/engine';
 import {define} from '@appolo/inject';
 
 @define()
-export class SomeClass {
-    
-    @pipeline(PipelineTest,{someValue:2})
-    test(value:number){
-        return value*value;
-    }
-}
-
-@define()
 export class PipelineTest implements IPipeline{
 
    async run(context:PipelineContext, next){
@@ -177,6 +168,18 @@ export class PipelineTest implements IPipeline{
         return next()
    }
 }
+
+
+@define()
+export class SomeClass {
+    
+    @pipeline(PipelineTest,{someValue:2})
+    test(value:number){
+        return value*value;
+    }
+}
+
+
 
 ```
 ### index
