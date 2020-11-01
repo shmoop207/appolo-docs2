@@ -24,7 +24,7 @@ in config/modules/all.ts
 import {PubSubModule} from '@appolo/pubsub';
 
 export = async function (app: App) {
-    await app.module.use(PubSubModule.for({
+    app.module.use(PubSubModule.for({
         connection:"redis://redis-connection-string"
     }));
 }
