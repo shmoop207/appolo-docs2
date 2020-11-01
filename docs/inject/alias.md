@@ -61,9 +61,23 @@ export class GoogleMailProvider implements IMailProvider{
 @define()
 class SomeController{
     @alias('IMailProvider','Type') mailProviders:{[index:string]:IMailProvider}
+    @aliasMap<IMailProvider>('IMailProvider',(item)=>item.Type) mailProviders:{[index:string]:IMailProvider}
+
 
     public send(providerType:string){
         return this.mailProviders[providerType].send()
+    }
+}
+```
+### Alias Map
+you can also inject Alias Map
+```typescript
+class SomeController{
+    @aliasMap<IMailProvider>('IMailProvider',(item)=>item.Type) mailProviders:Map<string,IMailProvider>
+
+
+    public send(providerType:string){
+        return this.mailProviders.get(providerType).send()
     }
 }
 ```
@@ -126,5 +140,18 @@ class SomeController{
     public send(providerType:string,from:string){
         return this.mailProviders[providerType](from).send()
     }
+}
+```
+### AliasFactory Map
+you can also inject Alias Factory Map
+
+```typescript
+class SomeController{
+    @aliasFactoryMap<typeof IMailProvider>('IMailProvider',(item)=>item.Type) mailProviders:Map<string,(from:string)=>IMailProvider>
+
+
+     public send(providerType:string,from:string){
+            return this.mailProviders.get(providerType)(from).send()
+        }
 }
 ```

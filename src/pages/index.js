@@ -122,7 +122,7 @@ export class MailController {
 
   @post("/send_mail")
   public async sendMail(@body() mail: Mail) {
-    return mailProvider.send(message);
+    return mailService.send(message);
   }
 }
 `}
@@ -138,6 +138,8 @@ export class MailService {
   @inject() private mailProvider:IMailProvider;
 
   public async send(message: Mail) {
+    //do some logic
+    message.from = "some@mail.com"
     await mailProvider.send(message);
   }
 }`}
