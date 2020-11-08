@@ -15,7 +15,7 @@ npm i @appolo/thread
 | --- | --- | --- | --- |
 | `id` | `poolProvider` injection id | `string`|  `poolProvider`|
 | `threads` | number of threads per pool | `number` | `1` |
-| `maxThreadJobs` | max running jobs pre thread    | `number` | `infinate` |
+| `maxThreadJobs` | max running jobs pre thread    | `number` | `infinite` |
 
 in config/modules/all.ts
 
@@ -35,7 +35,7 @@ worker class must inherit from `Worker`.
 ```typescript
 import { Worker,worker } from '@appolo/thread';
 
-@worker()
+@worker({threads:2})
 export class Fibonacci extends Worker {
     async run(num: number) {
         let a = 1, b = 0, temp;
