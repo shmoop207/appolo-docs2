@@ -233,6 +233,63 @@ export class TestController{
 }
 ```
 
+### Custom Validator
+it is possible to define custom validators as standalone or with inject.
+
+custom validator must implement `IConstraint` then register the validator using `registerConstraint`
+ ```typescript
+@define()
+@singleton()
+export class RangeValidator implements IConstraint {
+
+    @inject() env:IEnv
+
+    public async validate(params: ValidationParams): Promise<IConstraintValidateResult> {
+       
+        let isValid = params.value >= params.args[0] && params.value < params.args[1];
+
+        return {isValid};
+    }
+
+    public get type(): string {
+        return "range"
+    }
+
+    public get defaultMessage(): string {
+        return "${property} has invalid range "
+    }
+}
+```
+
+register the validator to the base schema
+
+ ```typescript
+registerConstraint.extend({
+    base: NumberSchema,
+    name: "range",
+    constraint: RangeValidator,
+    inject: true // set true to use injector to create the validator instance
+});
+```
+add the validator types to base schema
+ ```typescript
+
+declare module "@appolo/validator" {
+    export interface NumberSchema {
+        range(min: number, max: number): this;
+    }
+}
+```
+now we can use the validator
+ ```typescript
+    @validate(number().range(1, 3))
+    public async someMethod(num: number): Promise<any> {
+        return num
+    }
+
+
+```
+
 string constrain will run but not max constrain
 <!--- 
 ## Constrains
