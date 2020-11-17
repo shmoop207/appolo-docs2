@@ -105,6 +105,3 @@ pool.on("error",function(e) {
 })
 ````
 
-
-## License
-MIT
