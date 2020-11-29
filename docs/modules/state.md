@@ -92,45 +92,45 @@ for await (let state of store.states()) {
 ```
 
 ### stateAt
-#### stateAt(index: number): Promise<T/>
+#### stateAt(index: number): Promise<T\>
 return state at index
 
 
 ### setState
-#### setState(value: Partial<T/> | T, options?: SetStateOptions)
+#### setState(value: Partial<T\> | T, options?: SetStateOptions)
 set new  state
 
 
 ### increment
-#### increment(path: string, inc: number): Promise<void/>
+#### increment(path: string, inc: number): Promise<void\>
 increment counter by path
 ```typescript
 await state.increment("counter",1);
 ```
 
 ### lock
-#### lock(timeMilli = 5000, retryMilli = 5): Promise<T/>
+#### lock(timeMilli = 5000, retryMilli = 5): Promise<T\>
 get state and lock for given time is  state is locked it will retry with retryMilli.
 
 ### prevState
-#### get prevState(): Promise<T/>
+#### get prevState(): Promise<T\>
 return the previous state
 
 ### goToPrevState
-#### get goToPrevState(): Promise<T/>
+#### get goToPrevState(): Promise<T\>
 set the previous state as the current state
 
 
 ### nextState
-#### get nextState(): Promise<T/>
+#### get nextState(): Promise<T\>
 return the next state
 
 ### goToNextState
-#### get goToNextState(): Promise<T/>
+#### get goToNextState(): Promise<T\>
 set the next state as the current state
 
 ### goToState
-#### get goToState(index: number): Promise<T/>
+#### get goToState(index: number): Promise<T\>
 set current state by previous state index
 
 ### reset
