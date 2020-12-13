@@ -159,3 +159,74 @@ export class SomeManager {
     }
 }
 ```
+
+
+## Bus
+you can use cqrs with [@appolo/bus](./bus) and [class-transformer](https://github.com/typestack)
+
+you will need to load the bus module in `modules` config
+
+```typescript
+import {BusModule} from '@appolo/bus';
+
+export = async function (app: App) {
+    app.module.use(BusModule.for({
+        connection:"amqp://connection-string",
+        exhcnage:"exhcnage",
+        queue:"someQueue",
+        requestQueue:"someRequestQueue",
+        replyQueue:"someReplyQueue"
+    }));
+}
+```
+
+now call the commands events and queries will be published to rabbitMQ
+
+```typescript
+import {define, singleton} from '@appolo/inject'
+import {command,CommandBus} from "@appolo/cqrs-bus";
+
+export class SomeCommand {
+    constructor(public name:string) {
+    }
+}
+
+@define()
+@singleton()
+export class SomeManager {
+
+    @inject() commandBus: CommandBus;
+  
+    private async run() {
+            
+       await this.commandBus.execute(new SomeCommand("value"));
+    }
+}
+
+```
+
+it is possible to define custom bus options 
+```typescript
+@commnad({type:"Some.MyCommand",routingKey:"Some.Key"})
+export class SomeCommand {
+    constructor(public name:string) {
+    }
+}
+@define()
+@singleton()
+export class SomeCommandHandler {
+
+    @inject() manager: Manager;
+    @inject() eventsBus: EventsBus;
+
+    // bus options will be merged with the handler
+    @command({type:"Some.MyCommand2",routingKey:"Some.Key"})
+    private async handleSomeCommand(command: SomeCommand) {
+
+        let data  = await this.manager.getData(command.name);
+        await this.eventsBus.publish(new SomeEventdata(),{expire:1000})
+
+    }
+}
+
+```
