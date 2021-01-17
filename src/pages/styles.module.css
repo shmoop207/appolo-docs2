@@ -10,15 +10,30 @@
 }
 
 .badge {
-  display: block;
+  /*display: block;*/
   border-radius: 3rem;
-  min-height: 2.8rem;
+ /* min-height: 2.8rem;*/
+}
+
+.headerIcon{
+  /*display: block;*/
+  width: 4rem;
+  height: 4rem;
+  vertical-align: text-after-edge;
+  /* min-height: 2.8rem;*/
 }
 
 .header code {
   font-size: 1.8rem;
   padding: 1rem 2rem;
   border-radius: 2rem;
+}
+
+.header h1 {
+  line-height: 1.2;
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 0rem 0;
 }
 
 .header h2 {

@@ -32,7 +32,7 @@ function Home() {
 			<div className="home">
 				
 				<header className={clsx(styles.header, "container")}>
-					<img className={styles.badge} src="https://img.shields.io/npm/v/@appolo/core?style=for-the-badge"/>
+					<h1>Appolo <img className={styles.badge} src="https://img.shields.io/npm/v/@appolo/core?style=for-the-badge"/></h1>
 					<div className="row">
 						<div className="col col-6">
 							<h2>Node.js framework
@@ -48,7 +48,7 @@ function Home() {
 						<div className={clsx(styles.image, "col col-6")}>
 							{/* <img src="img/undraw_developer_activity_bv83.svg" /> */}
 							{/* <img src="img/undraw_Freelancer_re_irh4.svg" /> */}
-							<img src="img/undraw_coding_6mjf.svg"/>
+							<img src="img/undraw_programming_2svr.svg"/>
 							{/* <img src="img/undraw_programming_2svr.svg" /> */}
 						</div>
 					</div>

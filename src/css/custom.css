@@ -23,7 +23,7 @@
   --ifm-menu-link-padding-vertical: 1rem;
   --ifm-menu-link-padding-horizontal: 1rem;
   --ifm-global-spacing: 1.6rem;
-  
+
   --ifm-heading-line-height: 2rem;
   --ifm-toc-padding-vertical: .8rem;
   --ifm-leading: calc(1.25 * 1.6rem);
@@ -193,7 +193,7 @@ footer.footer a {
 .decorator-badge {
   margin: 1rem 0;
   border-radius: 3rem;
-  min-height: 2.8rem; 
+  min-height: 2.8rem;
 }
 
 .menu > ul > li > a {

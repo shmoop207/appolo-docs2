@@ -36,3 +36,8 @@ sidebar_label: Examples
 
 - demo [http://appolo-graphql-example.herokuapp.com/graphql](http://appolo-graphql-example.herokuapp.com/graphql)
 - source [https://github.com/shmoop207/appolo-graphql-example](https://github.com/shmoop207/appolo-graphql-example)
+
+
+## Passport Example
+passport js with mongoose  example
+- source [https://github.com/shmoop207/appolo-passport-example](https://github.com/shmoop207/appolo-passport-example)
