@@ -32,7 +32,7 @@ npm install --save @appolo/core
 ```
 ### Launch
 ```typescript
-var {createApp}  from '@appolo/core';
+import {createApp}  from '@appolo/core';
 
 createApp()
     .get("/some_path",(req,res)=> ({"working":true}))
